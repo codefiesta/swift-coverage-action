@@ -20,7 +20,7 @@ class LLVMCoverageReader {
             console.log(data);
 
             // Read the code coverage percentage
-            const percentage = data['data'][0]['files'][0]['summary']['lines']['percent'].toFixed(1);
+            const percentage = data['data'][0]['files'][0]['summary']['lines']['percent'].toFixed(0);
             console.log(`Coverage Percentage [${percentage}]`);
             core.setOutput("percentage", percentage);
 
