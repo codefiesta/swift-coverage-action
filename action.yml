@@ -1,0 +1,11 @@
+name: 'Swift Test Coverage Summary'
+description: 'Parses a swift test coverage report and outputs a percentage for displaying a badge.'
+branding:
+  icon: 'percent'
+  color: 'orange'
+outputs:
+  percentage:
+    description: 'The code coverage percentage'
+runs:
+  using: 'node20'
+  main: 'index.js'
