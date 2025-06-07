@@ -19,8 +19,15 @@ class LLVMCoverageReader {
             const data = require(file);
             console.log(data);
 
-            // Read the code coverage percentage
-            const percentage = data['data'][0]['files'][0]['summary']['lines']['percent'].toFixed(0);
+            // Read the code coverage percentages for every package file
+            const testedFiles = data['data'][0]['files'];
+            const testFileCount = testedFiles.length;
+            var accumlative = 0;
+            for (const i in testedFiles) {
+                accumlative += testedFiles[i]['summary']['lines']['percent'];
+            }
+            
+            let percentage = Math.floor(((accumlative / (100 * testFileCount)) * 100)).toFixed(0);
             console.log(`Coverage Percentage [${percentage}]`);
             core.setOutput("percentage", percentage);
 
